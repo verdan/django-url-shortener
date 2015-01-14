@@ -13,9 +13,6 @@ class Manager(object):
     def find(self, query, **kwargs):
         return query(self._base_queryset, **kwargs)
 
-    def exists(self, query, **kwargs):
-        return query(self._base_queryset, **kwargs).exists()
-
     def all(self, query=None, **kwargs):
         if query is None:
             return self._base_queryset.all()

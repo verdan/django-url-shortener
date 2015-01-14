@@ -51,6 +51,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+SITE_ID = 1
+
 ROOT_URLCONF = 'web.urls'
 
 WSGI_APPLICATION = 'urlshortener.wsgi.application'

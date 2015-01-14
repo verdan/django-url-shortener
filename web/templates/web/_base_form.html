@@ -1,0 +1,19 @@
+<form class="form-horizontal" method="post">{% csrf_token %}
+    {% for field in form %}
+        <div class="form-group {% if field.errors %}has-error{% endif %}">
+            <div class="col-lg-12">
+                <input class="form-control " type="{{ field.type }}" id="id_{{ field.label }}"
+                       placeholder="{{ field.label }}" name="{{ field.name }}"
+                       value="{% if field.value %}{{ field.value }}{% endif %}">
+                {% if field.errors %}
+                    <div class="pull-right">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> {{ field.errors.0 }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary {{ submit_button_class }}">{{ submit_button_text }}</button>
+    </div>
+</form>

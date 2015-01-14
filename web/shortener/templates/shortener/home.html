@@ -1,5 +1,50 @@
 {% extends 'web/base.html' %}
 
 {% block content %}
-    Hello World!
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            {% if shortened_url %}
+                {% include 'web/_base_form.html' with form=shortener_form submit_button_text='Shortified !' submit_button_class='btn-lg' %}
+                <span class="glyphicon glyphicon-arrow-down form-group-lg" style="font-size: 40px; color: #337ab7;"
+                      aria-hidden="true"></span>
+            {% else %}
+                {% include 'web/_base_form.html' with form=shortener_form submit_button_text='Shorten URL' submit_button_class='btn-lg' %}
+            {% endif %}
+        </div>
+    </div>
+    <br>
+    {% if shortened_url %}
+        <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            {% if already_shortened %}
+                <div class="alert alert-danger" role="alert">
+                    <strong>Ooops! Looks like someone already shortified this URL. Check out below.</strong>
+                </div>
+            {% else %}
+                <div class="alert alert-success" role="alert">
+                    <strong>Yayy! You've successfully shortified your Long URL.</strong>
+                </div>
+            {% endif %}
+            <br>
+
+            <div class="input-group input-group-lg">
+                <input type="text" class="form-control" value="{{ shortened_url.shortified }}">
+              <span class="input-group-btn">
+                <a class="btn btn-default" type="button" onclick="select_all('{{ shortened_url.shortified }}');"><span
+                        class="glyphicon glyphicon-edit glyphicon-align-left"
+                        aria-hidden="true"></span> Copy</a>
+                <a href="{{ shortened_url.shortified }}" target="_blank" class="btn btn-primary" type="button"><span
+                        class="glyphicon glyphicon-share-alt glyphicon-align-left" aria-hidden="true"></span> Go</a>
+              </span>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
+{% block javascript %}
+    <script type="text/javascript">
+        function select_all(obj) {
+            window.prompt("Copy to clipboard: Ctrl+C, Enter", obj)
+        }
+    </script>
+{% endblock %}
+
