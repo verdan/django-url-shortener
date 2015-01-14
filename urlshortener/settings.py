@@ -37,7 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.shortener',
+    'web',
+    'web.shortener',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -49,7 +50,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'apps.urls'
+ROOT_URLCONF = 'web.urls'
 
 WSGI_APPLICATION = 'urlshortener.wsgi.application'
 

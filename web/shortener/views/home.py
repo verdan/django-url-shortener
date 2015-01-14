@@ -7,7 +7,7 @@ class HomePage(BaseView):
     template_name = 'shortener/home.html'
 
     def get(self, *args, **kwargs):
-        return HttpResponse('hello world')
+        return {}
 
 
 def home_page_view(request):

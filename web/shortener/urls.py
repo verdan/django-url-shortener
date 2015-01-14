@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url
 
-from apps.shortener.views import home
+from web.shortener.views import home
 
 
 urlpatterns = patterns('',
