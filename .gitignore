@@ -1,0 +1,7 @@
+*.py[cod]
+
+# PyCharm
+.idea
+
+# Mac OSX
+.DS_Store
