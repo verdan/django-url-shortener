@@ -7,6 +7,6 @@ admin.autodiscover()
 urlpatterns = patterns('',
                        # Examples:
                        # url(r'^$', 'urlshortener.views.home', name='home'),
-                       url(r'^', include('modules.shortener.urls')),
+                       url(r'^', include('apps.shortener.urls')),
                        url(r'^admin/', include(admin.site.urls)),
 )
