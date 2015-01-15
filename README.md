@@ -75,6 +75,6 @@ Running the Tests
             
 Tests can also be run using shell command:
 
-            ./url_shortner.sh load-tests
+            ./url_shortner.sh tests
             
             
