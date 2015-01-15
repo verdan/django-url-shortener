@@ -7,15 +7,17 @@
     <title>Django Url Shortener</title>
 </head>
 <body>
-    <div class="container-fluid text-center">
-        <div class="jumbotron">
-          <h1>Django Url Shortener!</h1>
-          <p>Customised Django URL Shortener. It uses a list of predefined words related to the actual url instead of random alpha-numeric word.</p>
-        </div>
+<div class="container-fluid text-center">
+    <div class="jumbotron">
+        <h1>Django Url Shortener!</h1>
 
-        {% block content %}
-        {% endblock %}
+        <p>Customised Django URL Shortener. It uses a list of predefined words related to the actual url instead of
+            random alpha-numeric word.</p>
     </div>
+
+    {% block content %}
+    {% endblock %}
+</div>
 </body>
 {% block javascript %}
 {% endblock %}

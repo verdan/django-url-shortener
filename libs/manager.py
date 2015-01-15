@@ -2,6 +2,11 @@ import collections
 
 
 class Manager(object):
+    """
+    A Generic Manager Object that provides the common database functionality to child objects.
+    Reason of using this instead of making queries to model managers is code management and expansion.
+    """
+
     def __init__(self, base_class):
         self._base_class = base_class
         self._base_queryset = base_class.objects
@@ -32,6 +37,7 @@ class Manager(object):
         query_obj = query_obj[:1]
         return query_obj[0] if len(query_obj) > 0 else None
 
+    # noinspection PyMethodMayBeStatic
     def flat_values_list(self, queryset, field):
         return queryset.values_list(field, flat=True)
 
@@ -43,6 +49,7 @@ class Manager(object):
         record.save()
         return record
 
+    # noinspection PyMethodMayBeStatic
     def update(self, item, **kwargs):
         for k, v in kwargs.iteritems():
             setattr(item, k, v)

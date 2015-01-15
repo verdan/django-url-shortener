@@ -7,7 +7,7 @@ def unconsumed_secret_word(queryset, related_to_url):
     words_in_long_url = list(map(slugify, re.findall(r"[\w']+", related_to_url)))
     results = queryset.filter(slug__in=words_in_long_url, is_consumed=False)
     if not results:
-        results = queryset.filter(is_consumed=False)
+        results = queryset.filter(is_consumed=False).order_by('?')
     return results
 
 

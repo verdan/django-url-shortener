@@ -11,14 +11,20 @@ class HomePageView(BaseView):
 
     @staticmethod
     def retrieve_available_secret_word(for_url):
+        """
+        Finds the appropriate secret word against given URL.
+        Returns unconsumed secret word if found, else find the oldest secret word used.
+        """
         available_word = secret_words.get_first(unconsumed_secret_word, related_to_url=for_url)
         if not available_word:
             available_word = secret_words.get_oldest_consumed_secret_word()
-        secret_words.update(available_word, is_consumed=True)
+        available_word.mark_as_consumed()
         return available_word
 
-
     def get_context_data(self, **kwargs):
+        """
+        Returns the data that needs to be rendered on the frontend.
+        """
         long_url_of_user = kwargs.get('long_url_of_user').lower()
         already_shortened = tiny_urls.get_first(with_attrs, belongs_to=long_url_of_user, is_active=True)
         if already_shortened:

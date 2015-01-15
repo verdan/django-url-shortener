@@ -22,6 +22,12 @@ function load-words {
      python manage.py upload_words
 }
 
+
+function run-tests {
+	DJANGO_SETTINGS_MODULE=urlshortener.settings
+     python manage.py test
+}
+
 case $1 in
 
 install-dev )
@@ -31,6 +37,10 @@ install-dev )
 
 load-words )
     load-words
+	;;
+
+tests )
+    run-tests
 	;;
 
 * )

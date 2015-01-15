@@ -6,6 +6,10 @@ class SecretWord(models.Model):
     last_used = models.DateTimeField(auto_now=True)
     is_consumed = models.BooleanField(default=False)
 
+    def mark_as_consumed(self):
+        self.is_consumed = True
+        self.save()
+
 
 class TinyUrl(models.Model):
     belongs_to = models.URLField()
@@ -13,4 +17,9 @@ class TinyUrl(models.Model):
     added_on = models.DateTimeField(auto_now_add=True)
     added_by = models.IPAddressField(null=True, blank=True)
     is_active = models.BooleanField(default=True)
+
+    def mark_as_inactive(self):
+        self.is_active = False
+        self.linked_with = None
+        self.save()
 
