@@ -77,4 +77,11 @@ Tests can also be run using shell command:
 
             ./url_shortner.sh tests
             
+Future Plans
+------------
+
+Added IP address field in the Tiny URL model to keep track of the users and other reports related stuff.
+Created Generic Models Manager.
+Base presenter for future implementations of content renderings.
+            
             
