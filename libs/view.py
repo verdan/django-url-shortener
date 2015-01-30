@@ -17,9 +17,6 @@ class BaseView(object):
     def post(self, *args, **kwargs):
         raise NotImplementedError
 
-    def put(self, *args, **kwargs):
-        raise NotImplementedError
-
     def dispatch(self, *args, **kwargs):
         handler = getattr(self, self.request.method.lower(), self.get)
         response = handler(*args, **kwargs)

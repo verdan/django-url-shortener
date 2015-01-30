@@ -98,13 +98,7 @@ from custom management command:
 or, by using a shell command.
             
             ./url_shortner.sh load-words
-            
-Running the Tests
------------------
-            
-Tests can also be run using shell command:
 
-            ./url_shortner.sh tests
             
 Future Plans
 ------------

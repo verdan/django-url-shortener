@@ -2,7 +2,6 @@ from django.core.management.base import NoArgsCommand
 from django.conf import settings
 from django.utils.text import slugify
 
-from web.shortener.mangers import secret_words
 from web.shortener.models import SecretWord
 
 
@@ -33,8 +32,8 @@ class Command(NoArgsCommand):
         """
         Returns Set of slugs of existing secret words in the database.
         """
-        existing_words = secret_words.all()
-        return set(secret_words.flat_values_list(existing_words, field='slug'))
+        existing_words = SecretWord.get_slugs_list_of_all_secret_words()
+        return set(existing_words)
 
     @staticmethod
     def get_words_to_add(words_from_file, existing_words):
@@ -59,7 +58,7 @@ class Command(NoArgsCommand):
         for word in filtered_words:
             insertion_list.append(SecretWord(slug=word))
 
-        secret_words.bulk_create(insertion_list)
+        SecretWord.objects.bulk_create(insertion_list)
 
         if filtered_words:
             success_message = 'Hurray! %d words loaded in the database successfully.' % len(filtered_words)
